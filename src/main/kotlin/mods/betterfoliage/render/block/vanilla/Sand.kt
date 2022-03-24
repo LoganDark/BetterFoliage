@@ -74,7 +74,7 @@ class StandardSandModel(wrapped: BakedModel) : WrappedBakedModel(wrapped) {
 
         val random = randomSupplier.get()
         if (!BetterFoliage.config.enabled || !BetterFoliage.config.coral.enabled(random)) return
-        if (ctx.biome?.let(Biome::getCategory) !in SALTWATER_BIOMES) return
+        if (ctx.biome?.category !in SALTWATER_BIOMES) return
 
         allDirections.filter { random.nextInt(64) < BetterFoliage.config.coral.chance }.forEach { face ->
             val isWater = ctx.state(face).material == Material.WATER

@@ -92,7 +92,7 @@ class DirtModel(wrapped: BakedModel) : WrappedBakedModel(wrapped) {
         val isWater = stateUp.material == Material.WATER
         val isDeepWater = isWater && ctx.offset(Int3(2 to UP)).state.material == Material.WATER
         val isShallowWater = isWater && ctx.offset(Int3(2 to UP)).state.isAir
-        val isSaltWater = isWater && ctx.biome?.let(Biome::getCategory) in SALTWATER_BIOMES
+        val isSaltWater = isWater && ctx.biome?.category in SALTWATER_BIOMES
 
         val random = randomSupplier.get()
         if (BetterFoliage.config.connectedGrass.enabled && isGrassUp) {

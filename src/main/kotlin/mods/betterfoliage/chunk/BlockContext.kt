@@ -11,7 +11,6 @@ import net.minecraft.client.MinecraftClient
 import net.minecraft.client.render.chunk.ChunkRendererRegion
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
-import net.minecraft.util.registry.RegistryEntry
 import net.minecraft.world.BlockRenderView
 import net.minecraft.world.WorldView
 import net.minecraft.world.biome.Biome
@@ -31,7 +30,7 @@ interface BlockCtx {
     fun state(dir: Direction) = world.getBlockState(pos + dir.offset)
     fun state(offset: Int3) = world.getBlockState(pos + offset)
 
-    val biome: RegistryEntry<Biome>? get() =
+    val biome: Biome? get() =
         (world as? WorldView)?.getBiome(pos) ?:
         (world as? ChunkRendererRegion)?.let { ChunkRendererRegion_world[it]?.getBiome(pos) }
 
